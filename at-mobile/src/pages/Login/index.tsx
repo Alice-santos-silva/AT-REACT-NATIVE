@@ -4,12 +4,15 @@ import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import { auth } from "../../infra/firebase";
 import styles from './styles'; 
 import { useNavigation } from '@react-navigation/native'; 
+import { DrawerNavigationProp } from '@react-navigation/drawer'; 
+import { RootDrawerParamList } from "../../routes/navigation";
+
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<DrawerNavigationProp<RootDrawerParamList, 'Register'>>();
 
   const handleSubmit = async () => {
     try {
