@@ -11,18 +11,29 @@ export default StyleSheet.create({
     flex: 1,
     width: '100%',
   },
-  buttonContainer: {
-    position: 'absolute',
-    bottom: 20,
-    left: 0,
-    right: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   button: {
-    padding: 10,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    borderRadius: 5,
+    position:'absolute',
+    bottom:50,
+    left:30,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'white',
+    margin:20,
+    height:50,
+    width:50,
+    borderRadius:50
+  },
+  buttonCamera:{
+    position:'absolute',
+    bottom:50,
+    right:30,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'white',
+    margin:20,
+    height:50,
+    width:50,
+    borderRadius:50
   },
   text: {
     color: '#fff',
@@ -32,5 +43,27 @@ export default StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     marginBottom: 10,
+  },
+  contentButton:{
+    flex:1,
+    backgroundColor:"transparent",
+    flexDirection:"row",
+
+  },
+  contentModal:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'flex-end',
+    margin:20
+  },
+  closeButton:{
+    position:'absolute',
+    top:10,
+    left:2,
+    margin:10
+  },
+  imgPhoto:{
+    width:'100%',
+    height:400
   }
 })

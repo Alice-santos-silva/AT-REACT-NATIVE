@@ -66,7 +66,7 @@ const Profile: React.FC = () => {
               style={styles.image}
             />
           </View>
-          <Text style={styles.welcomeText}>Welcome {userDetails.firstName} 🙏🙏</Text>
+          <Text style={styles.welcomeText}>Welcome {userDetails.firstName}</Text>
           <View style={styles.infoContainer}>
             <Text style={styles.infoText}>Email: {userDetails.email}</Text>
             <Text style={styles.infoText}>First Name: {userDetails.firstName}</Text>
