@@ -19,7 +19,7 @@ const Profile: React.FC = () => {
   const navigation = useNavigation<ProfileScreenNavigationProp['navigation']>(); 
 
   const fetchUserData = async () => {
-    try {
+    try {3
       const user = auth.currentUser;
       if (user) {
         const docRef = doc(db, 'Users', user.uid);

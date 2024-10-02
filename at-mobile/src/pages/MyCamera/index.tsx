@@ -1,15 +1,18 @@
 import React, { useState, useRef } from 'react';
-import { Button, Text, TouchableOpacity, View, Modal, Image } from 'react-native';
+import { Button, Text, TouchableOpacity, View } from 'react-native';
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import { FontAwesome } from '@expo/vector-icons';
 import styles from './styles';
 
-const MyCamera: React.FC = () => {
-  const camRef = useRef<any>(null); 
+interface MyCameraProps {
+  addPhoto: (uri: string) => void; 
+}
+
+const MyCamera: React.FC<MyCameraProps> = ({ addPhoto }) => {
+  const camRef = useRef<any>(null);
   const [facing, setFacing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
-  const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null); 
-  const [open, setOpen] = useState<boolean>(false)
+  const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
 
   if (!permission) {
     return <View />;
@@ -32,7 +35,9 @@ const MyCamera: React.FC = () => {
     if (camRef.current) {
       const data = await camRef.current.takePictureAsync();
       setCapturedPhoto(data.uri);
-      setOpen(true)
+
+      addPhoto(data.uri);
+      alert("foto salva na galeria!")
     }
   };
 
@@ -49,21 +54,7 @@ const MyCamera: React.FC = () => {
           </TouchableOpacity>
         </View>
       </CameraView>
-      {capturedPhoto &&
-        <Modal
-        animationType='slide'
-        transparent={true}
-        visible={open}>
-          <View style={styles.contentModal}>
-            <TouchableOpacity style={styles.closeButton} onPress={() => {setOpen(false)}}>
-              <FontAwesome name='close' size={50} color="#f06292"></FontAwesome>
-            </TouchableOpacity>
-          
-            <Image style={styles.imgPhoto} source={{uri: capturedPhoto}}/>
-          </View>
-        </Modal>
-      }
-      
+     
     </View>
   );
 };
