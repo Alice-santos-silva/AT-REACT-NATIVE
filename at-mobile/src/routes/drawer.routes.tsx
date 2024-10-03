@@ -5,6 +5,8 @@ import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import MyCamera from "../pages/MyCamera";
 import MyGallery from "../pages/MyGallery";
+import Budget from "../pages/Budget";
+import Planner from "../pages/Planner";
 import { useState } from "react";
 
 const Drawer = createDrawerNavigator();
@@ -48,9 +50,19 @@ export default function DrawerRoutes() {
         options={{ drawerIcon: () => <Feather name="camera" /> }}
       />
       <Drawer.Screen
-        name="Galeria"
+        name="Clicks da viagem"
         component={RenderGalleryScreen} 
         options={{ drawerIcon: () => <Feather name="image" /> }}
+      />
+      <Drawer.Screen
+        name="Orçamento da viagem"
+        component={Budget} 
+        options={{ drawerIcon: () => <Feather name="dollar-sign" /> }}
+      />
+      <Drawer.Screen
+        name="Checklist da viagem"
+        component={Planner} 
+        options={{ drawerIcon: () => <Feather name="check-square" /> }}
       />
     </Drawer.Navigator>
   );
