@@ -7,15 +7,16 @@ import MyCamera from "../pages/MyCamera";
 import MyGallery from "../pages/MyGallery";
 import Budget from "../pages/Budget";
 import Planner from "../pages/Planner";
+import TabRoutes from "./tabRoutes"; 
 import { useState } from "react";
 
 const Drawer = createDrawerNavigator();
 
 export default function DrawerRoutes() {
-  const [photos, setPhotos] = useState<string[]>([]); 
+  const [photos, setPhotos] = useState<string[]>([]);
 
   const addPhoto = (uri: string) => {
-    setPhotos((prevPhotos) => [...prevPhotos, uri]); 
+    setPhotos((prevPhotos) => [...prevPhotos, uri]);
   };
 
   const RenderCameraScreen = (props: any) => <MyCamera {...props} addPhoto={addPhoto} />;
@@ -29,6 +30,11 @@ export default function DrawerRoutes() {
         },
       }}
     >
+      <Drawer.Screen
+        name="Página inicial" 
+        component={TabRoutes} 
+        options={{ drawerIcon: () => <Feather name="home" /> }} 
+      />
       <Drawer.Screen
         name="Login"
         component={Login}
