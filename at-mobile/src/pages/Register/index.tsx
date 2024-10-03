@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './styles'; 
 import { DrawerNavigationProp } from '@react-navigation/drawer'; 
 import { RootDrawerParamList } from "../../routes/navigation";
+import { useTheme } from 'react-native-paper';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -15,6 +16,8 @@ const Register: React.FC = () => {
   const [lname, setLname] = useState<string>("");
 
   const navigation = useNavigation<DrawerNavigationProp<RootDrawerParamList, 'Login'>>();
+
+  const theme = useTheme();
 
 
   const handleRegister = async () => {
@@ -44,34 +47,34 @@ const Register: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
+    <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
+      <Text style={styles.title}>Cadastre-se</Text>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>First name</Text>
+        <Text style={styles.label}>Nome</Text>
         <TextInput
           style={styles.input}
-          placeholder="First name"
+          placeholder="Nome"
           onChangeText={setFname}
           value={fname}
         />
       </View>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Last name</Text>
+        <Text style={styles.label}>Sobrenome</Text>
         <TextInput
           style={styles.input}
-          placeholder="Last name"
+          placeholder="Sobrenome"
           onChangeText={setLname}
           value={lname}
         />
       </View>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Email address</Text>
+        <Text style={styles.label}>Endereço de e-mail</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter email"
+          placeholder="email"
           onChangeText={setEmail}
           value={email}
           keyboardType="email-address"
@@ -79,10 +82,10 @@ const Register: React.FC = () => {
       </View>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Password</Text>
+        <Text style={styles.label}>Senha</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter password"
+          placeholder="senha"
           onChangeText={setPassword}
           value={password}
           secureTextEntry
@@ -90,7 +93,7 @@ const Register: React.FC = () => {
       </View>
 
       <TouchableOpacity onPress={handleRegister} style={styles.button}>
-        <Text style={styles.buttonText}>Sign Up</Text>
+        <Text style={styles.buttonText}>Cadastre-se</Text>
       </TouchableOpacity>
 
       <Text style={styles.forgotPasswordText}>

@@ -4,12 +4,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#ffebee',
+        
     },
     headerText: {
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 20,
+        color:'#d81b60'
     },
     textBox: {
         borderWidth: 1,
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 10,
         borderRadius: 5,
+
     },
     button: {
         backgroundColor: '#ec407a', 
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginVertical: 10,
+        color:'#d81b60'
     },
     expenseText: {
         fontSize: 16,

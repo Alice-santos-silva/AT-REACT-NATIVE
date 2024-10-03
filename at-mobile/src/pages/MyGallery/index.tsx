@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, FlatList, Image } from 'react-native';
 import styles from './styles';
+import { useTheme } from 'react-native-paper';
 
 
 interface MyGalleryProps {
@@ -8,8 +9,10 @@ interface MyGalleryProps {
 }
 
 const MyGallery: React.FC<MyGalleryProps> = ({ photos }) => {
+  const theme = useTheme();
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
       <FlatList
         data={photos}
         keyExtractor={(item) => item}

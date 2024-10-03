@@ -4,12 +4,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#ffebee',
     },
     headerText: {
         fontSize: 22,
         fontWeight: 'bold',
         marginBottom: 20,
+        color:'#d81b60'
     },
     textBoxes: {
         borderWidth: 1,
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     progressText: {
         fontSize: 16,
         marginVertical: 10,
+        color:'#d81b60'
     },
     progressBar: {
         marginVertical: 10,

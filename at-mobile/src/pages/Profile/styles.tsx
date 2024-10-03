@@ -6,7 +6,6 @@ export default StyleSheet.create({
       padding: 20,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#ffebee', 
     },
     imageContainer: {
       marginBottom: 20,

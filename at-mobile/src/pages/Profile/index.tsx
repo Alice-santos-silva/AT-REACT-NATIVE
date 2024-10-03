@@ -5,6 +5,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { ProfileScreenNavigationProp } from '../../routes/navigation'; 
+import { useTheme } from 'react-native-paper';
 
 interface UserDetails {
   email: string;
@@ -17,6 +18,9 @@ const Profile: React.FC = () => {
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigation = useNavigation<ProfileScreenNavigationProp['navigation']>(); 
+
+  const theme = useTheme();
+
 
   const fetchUserData = async () => {
     try {3
@@ -57,7 +61,7 @@ const Profile: React.FC = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
       {userDetails ? (
         <>
           <View style={styles.imageContainer}>
@@ -66,10 +70,10 @@ const Profile: React.FC = () => {
               style={styles.image}
             />
           </View>
-          <Text style={styles.welcomeText}>Welcome {userDetails.firstName}</Text>
+          <Text style={styles.welcomeText}>Bem-vindo, {userDetails.firstName} !!</Text>
           <View style={styles.infoContainer}>
             <Text style={styles.infoText}>Email: {userDetails.email}</Text>
-            <Text style={styles.infoText}>First Name: {userDetails.firstName}</Text>
+            <Text style={styles.infoText}>Nome: {userDetails.firstName}</Text>
           </View>
           <Button title="Logout" onPress={handleLogout} color="#ec407a" />
         </>

@@ -4,6 +4,7 @@ import { ref, set, update, onValue, push } from 'firebase/database';
 import { dbReal } from '../../infra/firebase'; 
 import * as Progress from 'react-native-progress';
 import styles from './styles';
+import { useTheme } from 'react-native-paper';
 
 interface Task {
     id: string;
@@ -15,6 +16,8 @@ export default function Planner() {
     const [task, setTask] = useState("");
     const [taskList, setTaskList] = useState<Task[]>([]); 
     const [progress, setProgress] = useState(0);
+
+    const theme = useTheme();
 
     function addTask() {
         const newTaskRef = ref(dbReal, 'tripTasks');
@@ -62,13 +65,14 @@ export default function Planner() {
     }, []);
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
             <Text style={styles.headerText}>Meu CheckList</Text>
             
             <TextInput
                 value={task}
                 onChangeText={(text) => setTask(text)}
                 placeholder='Adicionar nova tarefa'
+                placeholderTextColor="#D3D3D3"
                 style={styles.textBoxes}
             />
             <TouchableOpacity style={styles.addButton} onPress={addTask}>

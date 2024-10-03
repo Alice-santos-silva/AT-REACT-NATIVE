@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Alert, FlatList, TouchableOpacity } from 'react-native';
 import styles from './styles';
+import { useTheme } from 'react-native-paper';
 
 interface Expense {
     name: string;
@@ -13,6 +14,8 @@ const Budget = () => {
     const [expenseName, setExpenseName] = useState<string>("");
     const [expenseValue, setExpenseValue] = useState<string>("");
     const [expenses, setExpenses] = useState<Expense[]>([]);  
+
+    const theme = useTheme();
 
     function setBudgetAmount() {
         const budgetValue = parseFloat(budget);
@@ -43,13 +46,14 @@ const Budget = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
             <Text style={styles.headerText}>Meu Orçamento</Text>
 
             <TextInput
                 value={budget}
                 onChangeText={setBudget}  
                 placeholder="Definir orçamento (R$)"
+                placeholderTextColor="#D3D3D3"
                 keyboardType="numeric"
                 style={styles.textBox}
             />
@@ -63,12 +67,14 @@ const Budget = () => {
                 value={expenseName}
                 onChangeText={setExpenseName}
                 placeholder="Nome da despesa"
+                placeholderTextColor="#D3D3D3"
                 style={styles.textBox}
             />
             <TextInput
                 value={expenseValue}
                 onChangeText={setExpenseValue}
                 placeholder="Valor da despesa (R$)"
+                placeholderTextColor="#D3D3D3"
                 keyboardType="numeric"
                 style={styles.textBox}
             />
