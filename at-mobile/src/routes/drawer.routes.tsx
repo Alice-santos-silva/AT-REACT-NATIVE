@@ -5,6 +5,7 @@ import MyGallery from "../pages/MyGallery";
 import Budget from "../pages/Budget";
 import Planner from "../pages/Planner";
 import TabRoutes from "./tabRoutes"; 
+import WeatherSearch from "../pages/WeatherSearch";
 import Settings from "../pages/Settings";
 import { useState } from "react";
 
@@ -53,6 +54,11 @@ export default function DrawerRoutes() {
         name="Checklist da viagem"
         component={Planner} 
         options={{ drawerIcon: () => <Feather name="check-square" /> }}
+      />
+      <Drawer.Screen
+        name="Descubra a Meteorologia"
+        component={WeatherSearch} 
+        options={{ drawerIcon: () => <Feather name="search" /> }}
       />
       <Drawer.Screen
         name="Configurações"
