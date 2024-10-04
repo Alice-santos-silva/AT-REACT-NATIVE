@@ -10,7 +10,7 @@ const Settings: React.FC = () => {
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <Text style={styles.text}>
-        Tema Atual: {isDarkTheme ? 'Dark' : 'Claro'}
+        Tema Atual: {isDarkTheme ? 'Escuro' : 'Claro'}
       </Text>
       <Button mode="contained" onPress={toggleTheme}>
         Mudar Tema
