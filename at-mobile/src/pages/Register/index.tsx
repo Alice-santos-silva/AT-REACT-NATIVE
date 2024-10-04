@@ -33,15 +33,15 @@ const Register: React.FC = () => {
           photo: ""
         });
       }
-      console.log("User Registered Successfully!!");
-      Alert.alert("Success", "User Registered Successfully!!");
+      console.log("usuário registrado!");
+      Alert.alert("Usuário registrado!!");
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.log(error.message);
-        Alert.alert("Error", error.message);
+        Alert.alert("Erro", error.message);
       } else {
-        console.log("An unknown error occurred");
-        Alert.alert("Error", "An unknown error occurred");
+        console.log("um erro inesperado aconteceu");
+        Alert.alert("um erro inesperado aconteceu");
       }
     }
   };

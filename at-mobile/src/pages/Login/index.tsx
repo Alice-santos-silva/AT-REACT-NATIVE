@@ -27,30 +27,30 @@ const Login: React.FC = () => {
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.log(error.message);
-        Alert.alert("Error", error.message);
+        Alert.alert("Erro", error.message);
       } else {
-        console.log("An unknown error occurred");
-        Alert.alert("Error", "An unknown error occurred");
+        console.log("um erro desconhecido ocorreu");
+        Alert.alert("Erro", "um erro desconhecido ocorreu");
       }
     }
   };
 
   const handleForgotPassword = async () => {
     if (!resetEmail) {
-      Alert.alert("Error", "Please enter your email address to reset your password");
+      Alert.alert("Erro", "Entre um um endereço de e-mail para resetar a senha");
       return;
     }
     try {
       await sendPasswordResetEmail(auth, resetEmail);
-      Alert.alert("Success", "Password reset email sent!");
+      Alert.alert("Email para recuperação de senha enviado");
       setModalVisible(false); 
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.log(error.message);
-        Alert.alert("Error", error.message);
+        Alert.alert("Erro", error.message);
       } else {
-        console.log("An unknown error occurred");
-        Alert.alert("Error", "An unknown error occurred");
+        console.log("um erro aconteceu");
+        Alert.alert("Erro", "um erro inesperado aconteceu");
       }
     }
   };

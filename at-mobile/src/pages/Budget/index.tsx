@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, Text, TextInput, Alert, FlatList, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { useTheme } from 'react-native-paper';
@@ -39,9 +39,9 @@ const Budget = () => {
             setExpenseName("");
             setExpenseValue("");
         } else if (expense > remaining) {
-            Alert.alert("Desculpe, orçamento insuficiente para essa despesa.");
+            Alert.alert("Orçamento insuficiente para essa despesa.");
         } else {
-            Alert.alert("Por favor, insira um valor válido.");
+            Alert.alert("Insira um valor válido.");
         }
     }
 

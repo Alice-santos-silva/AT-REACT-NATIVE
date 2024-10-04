@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, Button, ActivityIndicator } from 'react-native';
+import { View, Text, Button, ActivityIndicator } from 'react-native';
 import { auth, db } from '../../infra/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import styles from './styles';
@@ -23,7 +23,7 @@ const Profile: React.FC = () => {
 
 
   const fetchUserData = async () => {
-    try {3
+    try {
       const user = auth.currentUser;
       if (user) {
         const docRef = doc(db, 'Users', user.uid);
@@ -31,14 +31,14 @@ const Profile: React.FC = () => {
         if (docSnap.exists()) {
           setUserDetails(docSnap.data() as UserDetails);
         } else {
-          console.log("User is not logged in");
+          console.log("Usuário não está logado");
         }
         setLoading(false);
       } else {
         navigation.navigate('Login'); 
       }
     } catch (error) {
-      console.error("Error fetching user data:", error);
+      console.error("Erro:", error);
       setLoading(false);
     }
   };
@@ -52,7 +52,7 @@ const Profile: React.FC = () => {
       await auth.signOut();
       navigation.navigate('Login');
     } catch (error) {
-      console.error("Error logging out:", error);
+      console.error("Erro:", error);
     }
   };
 
@@ -64,12 +64,6 @@ const Profile: React.FC = () => {
     <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
       {userDetails ? (
         <>
-          <View style={styles.imageContainer}>
-            <Image
-              source={{ uri: userDetails.photo || 'https://via.placeholder.com/150' }}
-              style={styles.image}
-            />
-          </View>
           <Text style={styles.welcomeText}>Bem-vindo, {userDetails.firstName} !!</Text>
           <View style={styles.infoContainer}>
             <Text style={styles.infoText}>Email: {userDetails.email}</Text>
@@ -78,7 +72,7 @@ const Profile: React.FC = () => {
           <Button title="Logout" onPress={handleLogout} color="#ec407a" />
         </>
       ) : (
-        <Text>No user details available.</Text>
+        <Text>Não há informações sobre o usuário</Text>
       )}
     </View>
   );

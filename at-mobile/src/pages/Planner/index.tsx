@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Alert, TouchableOpacity } from 'react-native';
-import { ref, set, update, onValue, push } from 'firebase/database';
+import { ref, set, update, onValue, push, remove } from 'firebase/database';
 import { dbReal } from '../../infra/firebase'; 
 import * as Progress from 'react-native-progress';
 import styles from './styles';
 import { useTheme } from 'react-native-paper';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Task {
     id: string;
@@ -46,6 +47,17 @@ export default function Planner() {
         });
     }
 
+    function deleteTask(id: string) {
+        remove(ref(dbReal, 'tripTasks/' + id))
+            .then(() => {
+                Alert.alert("Tarefa deletada!");
+                fetchTasks(); 
+            })
+            .catch((error) => {
+                Alert.alert("Erro", error.message);
+            });
+    }
+
     function fetchTasks() {
         const tasksRef = ref(dbReal, 'tripTasks');
         onValue(tasksRef, (snapshot) => {
@@ -65,7 +77,7 @@ export default function Planner() {
     }, []);
 
     return (
-        <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
+        <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
             <Text style={styles.headerText}>Meu CheckList</Text>
             
             <TextInput
@@ -106,6 +118,13 @@ export default function Planner() {
                                 <Text style={styles.buttonText}>
                                     {item.status === 'complete' ? 'Desfazer' : 'Completar'}
                                 </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => deleteTask(item.id)}>
+                                <MaterialCommunityIcons 
+                                    name="trash-can" 
+                                    size={24} 
+                                    color={theme.colors.error} 
+                                />
                             </TouchableOpacity>
                         </View>
                     ))}

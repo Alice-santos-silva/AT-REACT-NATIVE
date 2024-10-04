@@ -37,7 +37,6 @@ const MyCamera: React.FC<MyCameraProps> = ({ addPhoto }) => {
       setCapturedPhoto(data.uri);
 
       addPhoto(data.uri);
-      alert("foto salva na galeria!")
     }
   };
 
